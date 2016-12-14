@@ -53,7 +53,8 @@ let Main = React.createClass({
                     <tr>
                       <th>Subject</th>
                       <th>Mark</th>
-                      <th>Grade</th>
+                      <th>Letter Grade</th>
+                      <th>Grade Point</th>
                     </tr>
                   </thead>
                   <tbody>
