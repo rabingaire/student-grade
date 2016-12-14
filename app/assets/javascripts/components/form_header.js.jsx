@@ -7,17 +7,21 @@ let FormHeader = React.createClass({
             <label for="schoolname">School Name</label>
             <input type="text" className="form-control" id="schoolname" placeholder="Enter School Name..."/>
           </div>
-          <div className="form-group col-md-6 col-xs-12">
+          <div className="form-group col-xs-12">
             <label for="studentName">Name</label>
             <input type="text" className="form-control" id="studentName" placeholder="Enter Student Name..."/>
           </div>
-          <div className="form-group col-md-3 col-xs-12">
+          <div className="form-group col-md-4 col-xs-12">
             <label for="studentRoll">Roll</label>
-            <input type="text" className="form-control" id="studentRoll" placeholder="Roll..."/>
+            <input type="text" className="form-control" id="studentRoll" placeholder="Roll"/>
           </div>
-          <div className="form-group col-md-3 col-xs-12">
+          <div className="form-group col-md-4 col-xs-12">
             <label for="studentClass">Class</label>
-            <input type="text" className="form-control" id="studentClass" placeholder="Class..."/>
+            <input type="text" className="form-control" id="studentClass" placeholder="Class"/>
+          </div>
+          <div className="form-group col-md-4 col-xs-12">
+            <label for="studentSection">Section</label>
+            <input type="text" className="form-control" id="studentSection" placeholder="Section"/>
           </div>
         </form>
       </div>
