@@ -16,7 +16,7 @@ let Main = React.createClass({
   addNewData(subjectMarkInfo) {
     let subjectMarkInfos = this.state.subjectMarkInfos.slice();
     subjectMarkInfos.push(subjectMarkInfo);
-    this.setState({subjectMarkInfos: subjectMarkInfos})
+    this.setState({subjectMarkInfos: subjectMarkInfos});
   },
 
   render() {
