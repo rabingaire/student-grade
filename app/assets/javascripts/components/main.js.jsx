@@ -1,9 +1,11 @@
 let Main = React.createClass({
   render() {
-    return {
+    return (
       <div>
-        hello World
+        <div className="text-center">
+          <h1>School Report</h1>
+        </div>
       </div>
-    }
+    )
   }
 });
