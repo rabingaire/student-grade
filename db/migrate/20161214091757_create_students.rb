@@ -6,6 +6,7 @@ class CreateStudents < ActiveRecord::Migration[5.0]
     	t.integer :roll_no
     	t.integer :class
     	t.string :sub_class
+      t.string :something
       t.timestamps
     end
   end
