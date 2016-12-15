@@ -9,14 +9,47 @@ let Main = React.createClass({
         subjectMarkInfos: []
     }
   },
+
   handleChange(data, name) {
     this.setState({ [name]: data });
   },
 
   addNewData(subjectMarkInfo) {
-    let subjectMarkInfos = this.state.subjectMarkInfos.slice();
-    subjectMarkInfos.push(subjectMarkInfo);
-    this.setState({subjectMarkInfos: subjectMarkInfos});
+    if( this.checkDuplicateData(subjectMarkInfo) < 1 ) {
+      let subjectMarkInfos = this.state.subjectMarkInfos.slice();
+      subjectMarkInfos.push(subjectMarkInfo);
+      this.setState({subjectMarkInfos: subjectMarkInfos});
+    }
+  },
+
+  checkDuplicateData(subjectMarkInfo) {
+    let count = 0;
+    this.state.subjectMarkInfos.map( (data) => {
+      if(data.subject === subjectMarkInfo.subject) {
+        count ++
+      }
+    })
+    return count;
+  },
+
+  handleClick() {
+    $.ajax({
+      url: '/students',
+      type: 'POST',
+      data: {
+        student: {
+          schoolname: this.state.schoolName,
+          name: this.state.studentName,
+          roll_no: this.state.studentRoll,
+          student_class: this.state.studentClass,
+          sub_class: this.state.studentSection
+        }
+      },
+      context: this,
+      success(data) {
+        console.log("Yahoo!");
+      }
+    });
   },
 
   render() {
@@ -61,6 +94,7 @@ let Main = React.createClass({
                     {subjectMarkInfos}
                   </tbody>
                 </table>
+                <button className="btn btn-primary" onClick={this.handleClick} disabled={this.state.subjectMarkInfos[0] == null}>Save to Database</button>
               </div>
             </div>
           </div>

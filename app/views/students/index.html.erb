@@ -1,1 +1,4 @@
 <%= react_component 'Main' %>
+<% @students.each do |student| %>
+  <%= student.name %>
+<% end %>

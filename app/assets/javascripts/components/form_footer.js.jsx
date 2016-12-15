@@ -1,11 +1,21 @@
 let FormFooter = React.createClass({
+  getInitialState() {
+    return {
+      subject: "",
+      mark: ""
+    }
+  },
+
+  onChange(event) {
+    let name = event.target.name;
+    this.setState({ [name]: event.target.value });
+  },
+
   handleClick() {
-    let subject = this.refs.subject.value;
-    let mark = this.refs.marks.value;
-    let grade = this.calculateGrade(mark);
+    let grade = this.calculateGrade(this.state.mark);
     let letter_grade = grade[0];
     let grade_point =  grade[1];
-    this.props.handleAddData({  subject: subject, mark: mark, letter_grade: letter_grade, grade_point: grade_point });
+    this.props.handleAddData({ subject: this.state.subject, mark: this.state.mark, letter_grade: letter_grade, grade_point: grade_point });
   },
 
   calculateGrade(mark) {
@@ -30,20 +40,24 @@ let FormFooter = React.createClass({
     }
   },
 
+  valid() {
+    return this.state.subject && this.state.mark;
+  },
+
   render() {
     return (
       <div className="form-footer">
         <div className="row">
           <div className="col-md-5 col-xs-12">
             <label htmlFor="subject">Subject</label>
-            <input ref="subject" type="text" className="form-control" id="subject" placeholder="Subject Name..."/>
+            <input name="subject" onChange={this.onChange} type="text" className="form-control" id="subject" placeholder="Subject Name..."/>
           </div>
           <div className="col-md-5 col-xs-12">
             <label htmlFor="marks">Marks</label>
-            <input ref="marks" type="text" className="form-control" id="marks" placeholder="Marks obt..."/>
+            <input name="mark" onChange={this.onChange} type="text" className="form-control" id="marks" placeholder="Marks obt..."/>
           </div>
           <div className="col-md-2 col-xs-12">
-            <button type="submit" className="btn btn-primary" onClick={this.handleClick}>
+            <button type="submit" className="btn btn-primary" onClick={this.handleClick} disabled={!this.valid()}>
               <i className="fa fa-plus" aria-hidden="true"></i>
             </button>
           </div>
