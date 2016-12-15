@@ -47,7 +47,7 @@ let Main = React.createClass({
       },
       context: this,
       success(data) {
-        console.log("Yahoo!");
+        console.log("Yahoo");
       }
     });
   },
